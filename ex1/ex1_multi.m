@@ -153,7 +153,10 @@ fprintf('\n');
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
 price = 0; % You should change this
-
+temp = [1 1650 3];
+temp(1,2) = (temp(1,2) - mu(1,1))/(sigma(1,1));
+temp(1,3) = (temp(1,3) - mu(1,2))/(sigma(1,2));
+price = temp * theta;
 
 % ============================================================
 

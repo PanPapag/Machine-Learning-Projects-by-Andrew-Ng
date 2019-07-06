@@ -77,7 +77,23 @@ a3 = sigmoid(z3);
 y = repmat([1:num_labels], m, 1) == repmat(y, 1, num_labels);
 J = (-1 / m) * sum(sum(y.* log(a3) + (1 - y).* log(1 - a3)));
 
+regTheta1 = Theta1(:,2:end);
+regTheta2 = Theta2(:,2:end);
+regularizationTerm = (lambda / (2 * m)) * (sum(sum(regTheta1.^2)) + sum(sum(regTheta2.^2)));
+J = J + regularizationTerm;
 
+% -------- Back propagation -------- % 
+
+
+delta1 = zeros(size(Theta1));
+delta2 = zeros(size(Theta2));
+for i=1:m
+    a1i = a1(i,:);
+	a2i = a2(i,:);
+	a3i = a3(i,:);
+	yi = y(i,:);
+    d3 = a3i - yi;
+end
 
 
 

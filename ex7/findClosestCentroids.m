@@ -21,11 +21,21 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+% number of examples 
+m = size(X,1);
+% Iterate for every example in the dataset
+for i=1:m
+    minCentroidDistance = inf;
+    % Go through each centroid
+    for j=1:K
+		curDistance = sum((X(i,:) - centroids(j,:)).^2);
+        if curDistance < minCentroidDistance
+            minCentroidDistance = curDistance;
+            minCentroid = j;
+        end
+    end
+    idx(i) = minCentroid;
+end
 
 % =============================================================
 

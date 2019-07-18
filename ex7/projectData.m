@@ -19,6 +19,13 @@ Z = zeros(size(X, 1), K);
 %
 
 
+% number of data points 
+m = size(X,1);
+% go through each example
+for i = 1:m
+    x = X(i, :)';
+    Z(i, :) = x' * U(:, K);
+end
 
 
 % =============================================================
